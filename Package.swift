@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "GreemAds",
+    name: "AsyncAds",
     platforms: [.iOS(.v14)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "GreemAds",
+            name: "AsyncAds",
             targets: [
-                "GreemAds",
+                "AsyncAds",
             ]),
     ],
     dependencies: [
@@ -24,14 +24,14 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "GreemAds",
+            name: "AsyncAds",
             dependencies: [
                 .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads")
             ]
         ),
         .testTarget(
-            name: "GreemAdsTests",
-            dependencies: ["GreemAds"]
+            name: "AsyncAdsTests",
+            dependencies: ["AsyncAds"]
         ),
     ]
 )

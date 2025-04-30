@@ -8,6 +8,7 @@
 import Foundation
 import GoogleMobileAds
 
+/// AdMob 광고 구현체
 public final class AdMobServiceImpl: AdMobService {
     public lazy var fullScreenAd: FullScreenAdRepresentable = FullScreenAdmobImpl()
     

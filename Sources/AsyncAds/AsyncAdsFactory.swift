@@ -8,6 +8,7 @@
 import Foundation
 
 public enum AsyncAdsFactory {
+    /// AdMob 서비스를 제공
     public static func makeAdMobService() -> AdMobService {
         AdMobServiceImpl()
     }

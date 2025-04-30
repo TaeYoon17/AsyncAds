@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum FullScreenAdEffectType {
+public enum FullScreenAdEffectType: Sendable {
     case didDismiss
     case willDismiss
     case adLinkClicked

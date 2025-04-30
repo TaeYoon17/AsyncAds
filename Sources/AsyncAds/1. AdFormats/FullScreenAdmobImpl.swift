@@ -16,6 +16,13 @@ public final class FullScreenAdmobImpl: NSObject, FullScreenAdRepresentable, Ful
     private var adStreamContinuation: AsyncStream<FullScreenAdEffectType>.Continuation!
     private var adUniID = ""
     
+    override init() {
+        super.init()
+        self.adProcessStream = AsyncStream { continuation in
+            self.adStreamContinuation = continuation
+        }
+    }
+    
     public func setADUnitID(_ id: String) {
         self.adUniID = id
     }

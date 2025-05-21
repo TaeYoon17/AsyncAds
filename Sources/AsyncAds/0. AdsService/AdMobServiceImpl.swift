@@ -11,18 +11,20 @@ import GoogleMobileAds
 /// AdMob 광고 구현체
 public final class AdMobServiceImpl: AdMobService {
     public lazy var fullScreenAd: FullScreenAdRepresentable = FullScreenAdmobImpl()
-    
+    private var task: Task<(), Never>?
     public func setup() async {
-        await withCheckedContinuation { continuation in
-            MobileAds.shared.start(completionHandler: { _ in
-                continuation.resume()
-            })
-            Task {
+        await withCheckedContinuation { [weak self] continuation in
+            guard let self else { return }
+            self.task = Task {
+                try? await Task.sleep(nanoseconds: 180_000_000_000)
                 if !Task.isCancelled {
-                    try? await Task.sleep(nanoseconds: 180_000_000_000)
                     continuation.resume(returning: ())
                 }
             }
+            MobileAds.shared.start(completionHandler: { [weak self] _ in
+                continuation.resume()
+                self?.task?.cancel()
+            })
         }
     }
 }
